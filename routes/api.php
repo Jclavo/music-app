@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 
 // Add route to GenreController
 Route::resource('genres', 'GenreController');
+Route::resource('songs' , 'SongController');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
