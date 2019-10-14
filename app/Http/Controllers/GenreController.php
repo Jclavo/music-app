@@ -102,7 +102,7 @@ class GenreController extends ResponseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Genre $genre)
+    public function update(int $id, Request $request)
     {
         
         $input = $request->all();
@@ -117,6 +117,7 @@ class GenreController extends ResponseController
             return $this->sendError('Validation Error.', $validator->errors());
         }
         
+        $genre = Genre::find($id);
         
         $genre->name = $request->name;
                 
@@ -132,8 +133,9 @@ class GenreController extends ResponseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Genre $genre)
+    public function destroy(int $id)
     {
+        $genre = Genre::find($id);
         
         $genre->delete();
 
