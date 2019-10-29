@@ -15,11 +15,13 @@ class CreateSongs extends Migration
     {
         Schema::create('songs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('path');
+            $table->string('title');
+            $table->string('file');
+            $table->biginteger('genre_id')->unsigned();
+            
             $table->timestamps();
             
-            $table->biginteger('genre_id')->unsigned();
+            //Foreign
             $table->foreign('genre_id')->references('id')->on('genres');
         });
     }
